@@ -10,31 +10,10 @@
         :data="getNodeStatusResponse.nodeStatus"
         :variant="getNodeStatusResponse.class"
       />
-      <list-entry
-        v-if="getInfoResponse.message !== ''"
-        title="Daemon Version"
-        :data="getInfoResponse.message.version.toString()"
-      />
-      <list-entry
-        v-if="getInfoResponse.message !== ''"
-        title="Protocol Version"
-        :data="getInfoResponse.message.protocolversion.toString()"
-      />
-      <list-entry
-        v-if="getInfoResponse.message !== ''"
-        title="Current Blockchain Height"
-        :data="getInfoResponse.message.blocks.toString()"
-      />
-      <list-entry
-        v-if="getInfoResponse.status.length > 0 && getInfoResponse.message.errors != ''"
-        title="Error"
-        :data="getInfoResponse.message.errors"
-        variant="danger"
-      />
     </b-card>
 
-    <b-card v-if="privilege === 'none'">
-      <b-card-title>Log In</b-card-title>
+    <b-card v-if="privilege === 'none' && false">
+      <b-card-title>Log In (TODO)</b-card-title>
       <dl class="row">
         <dd class="col-sm-4">
           <b-card-text class="text-center">
@@ -179,17 +158,12 @@ export default {
       'config',
       'privilege',
     ]),
-    callbackValue() {
-      const backendURL = this.backendURL();
-      const url = `${backendURL}/id/verifylogin`;
-      return encodeURI(url);
-    },
   },
   mounted() {
-    this.daemonGetInfo();
-    this.daemonWelcomeGetZelNodeStatus();
-    this.getZelIdLoginPhrase();
-    this.getOwnerZelid();
+    // this.daemonGetInfo();
+    // this.daemonWelcomeGetZelNodeStatus();
+    // this.getZelIdLoginPhrase();
+    // this.getOwnerZelid();
   },
   methods: {
     backendURL() {

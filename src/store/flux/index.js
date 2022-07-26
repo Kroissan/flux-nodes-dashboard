@@ -5,7 +5,7 @@ export default {
   state: {
     userconfig: {
       zelid: '',
-      externalip: 'api.runonflux.io',
+      externalip: '',
     },
     config: {
       apiPort: config.server.apiport,

@@ -98,7 +98,6 @@ import VerticalNavMenuItems from './components/vertical-nav-menu-items/VerticalN
 import useVerticalNavMenu from './useVerticalNavMenu';
 
 const qs = require('qs');
-const axios = require('axios');
 
 export default {
   components: {
@@ -136,35 +135,8 @@ export default {
 
     const {
       isNavMenuCollapsed,
-      xdaoOpenProposals,
       skin,
     } = useAppConfig();
-
-    const getVoteInformation = async (proposal) => {
-      const response = await axios.get(`https://stats.runonflux.io/proposals/voteInformation?hash=${proposal.hash}&zelid=${zelid.value}`);
-      return response.data;
-    };
-
-    const checkXDAOProposals = async () => {
-      let openNotVoted = 0;
-      axios.get('https://stats.runonflux.io/proposals/listProposals').then((response) => {
-        if (response.data.status === 'success') {
-          const openProposals = response.data.data.filter((proposal) => proposal.status === 'Open');
-          openProposals.forEach(async (proposal) => {
-            const voteInformation = await getVoteInformation(proposal);
-            if (voteInformation.status === 'success' && (voteInformation.data == null || voteInformation.data.length === 0)) {
-              openNotVoted += 1;
-              xdaoOpenProposals.value = openNotVoted;
-            }
-          });
-        }
-      });
-    };
-
-    setInterval(() => {
-      checkXDAOProposals();
-    }, 1000 * 60 * 10); // Refresh every 10 minutes
-    checkXDAOProposals();
 
     // Shadow bottom is UI specific and can be removed by user => It's not in `useVerticalNavMenu`
     const shallShadowBottom = ref(false);
