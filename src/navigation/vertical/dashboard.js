@@ -1,6 +1,6 @@
 export default [
   {
-    header: 'Dashboard',
+    header: 'Statistics',
   },
   {
     title: 'Overview',

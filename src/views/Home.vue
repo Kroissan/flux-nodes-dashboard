@@ -12,6 +12,42 @@
       />
     </b-card>
 
+    <b-card title="Flux Nodes Paiement queue">
+      <b-row class="match-height overflow-auto">
+        <b-col
+            md="4"
+            lg="2"
+            xxl="1"
+            v-for="item in items" :key="item.message">
+        <b-list-group-item>
+          <b-card no-body>
+            <b-card-body class="d-flex justify-content-between align-items-center">
+              <div>
+                <h2 class="mt-0 truncate">
+                  Total Nodes: {{ totalNodes }}
+                </h2>
+              </div>
+              <b-avatar
+                  size="48"
+                  variant="light-success"
+              >
+                <feather-icon
+                    size="24"
+                    icon="ServerIcon"
+                />
+              </b-avatar>
+            </b-card-body>
+            <vue-apex-charts
+                type="donut"
+                height="400"
+                width="100%"
+            />
+          </b-card>
+        </b-list-group-item>
+      </b-col>
+      </b-row>
+    </b-card>
+
     <b-card v-if="privilege === 'none' && false">
       <b-card-title>Log In (TODO)</b-card-title>
       <dl class="row">
@@ -136,6 +172,10 @@ export default {
         status: '',
         message: '',
       },
+      items: [
+        { message: 'Foo' },
+        { message: 'Bar' },
+      ],
       getNodeStatusResponse: {
         class: 'text-success',
         status: '',

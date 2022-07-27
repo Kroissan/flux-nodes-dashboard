@@ -1,6 +1,10 @@
 import Api from '@/services/Api';
+import ExplorerApi from '@/services/ExplorerApi';
 
 export default {
+  getInfo() {
+    return ExplorerApi().get('/status?q=getInfo');
+  },
   getAddressBalance(address) {
     return Api().get(`/explorer/balance/${address}`);
   },

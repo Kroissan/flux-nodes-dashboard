@@ -1,7 +1,7 @@
 export default [
   {
-    title: 'Dashboard',
-    icon: 'desktop',
+    title: 'Statistics',
+    icon: 'chart-pie',
     spacing: true,
     children: [
       {

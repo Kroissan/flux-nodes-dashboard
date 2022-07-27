@@ -1,4 +1,9 @@
 import config from 'ZelBack/config/default';
+import axios from "axios"
+
+const CUMULUS_REWARD_RATIO = 7.5 / 100;
+const NIMBUS_REWARD_RATIO = 12.5 / 100;
+const STRATUS_REWARD_RATIO = 30 / 100;
 
 export default {
   namespaced: true,
@@ -14,6 +19,7 @@ export default {
     privilege: 'none', // user, admin, fluxteam
     fluxVersion: '',
     xdaoOpen: 0,
+    blockReward: null,
   },
   getters: {
     xdaoOpen(state) {
@@ -40,5 +46,6 @@ export default {
       state.xdaoOpen = open;
     },
   },
-  actions: {},
+  actions: {
+  },
 };
